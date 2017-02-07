@@ -44,62 +44,20 @@ var plainFinal = plainletter.split("");
 function encrypt(){
 
 var sourceCopy = sourceFinal;
-var usedKeySpace = []
 var encArr = [];
 for(var i = 0; i < plainFinal.length; i++){
   plainLetter = plainFinal[i];
   for(var j = 0; j < sourceCopy.length; j++){
     sourceLetter = sourceCopy[j];
-    console.log(sourceCopy[j]+ " "+j);
-    if(sourceLetter === plainLetter && (usedKeySpace.indexOf(sourceLetter) === -1)){
-      console.log(usedKeySpace);
+    if(sourceLetter === plainLetter){
       var tempLetter = j;
       encArr.push(tempLetter);
-      usedKeySpace.push(sourceLetter); //add to the array of used letters
-      //break;
+      break;
     }
-    else if(j === sourceCopy.length-1){
-      for(k = 0;k<usedKeySpace.length;k++){
-        //find all indicies where the element in sourceCopy[j] is found in usedkey space and add them deletion array array
-        if(sourceCopy[j] === usedKeySpace[k]){
-          delete usedKeySpace[i];
-        }
-      }
-    }
+   
   }
 }
 return encArr.toString();
 }
 console.log(encrypt());
 
-/***
-* get the first index from encrypted sourced
-* match the number to the index of the source
-* get the value of that index
-***/
- var encrypted = encrypt();
-
-function decrypt(){
-
-var decArr = [];
-var numbersSplit = encrypted.split(',');
-
-for(var i = 0; i < numbersSplit.length; i++){
-  var num = numbersSplit[i];
-  for(var j = 0; j< sourceFinal.length; j++){
-    var sourceIndex = j;
-    if(sourceIndex == num){
-      var tempLetter = sourceFinal[j];
-      decArr.push(tempLetter);
-    }
-  }
-}
-return decArr.toString();
-}
-console.log(decrypt());
-
-/***
-*uppercase
-*take the rest of the characters
-* start at random place in text
-***/
